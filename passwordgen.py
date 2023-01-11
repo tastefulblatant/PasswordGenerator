@@ -1,7 +1,7 @@
 import random
-from colorama import Fore
 import time
 import os
+
 print(f"""
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -71,17 +71,28 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 """)
 print("Vítejte v generátoru hesel.")
 q_n = int(input("Jak dlouhé heslo chcete mít?\n"))
-os.system('cls')
-time.sleep(2)
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-letters_2 = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-special = ['%', '#', '$', '!', '&', '(', ')', '*', '+', '?']
-all = letters+letters_2+numbers+special
-password = ''.join((random.choice(all) for i in range(q_n)))
-time.sleep(2)
-print(f"""
------------------------
-Vaše heslo je: {password}
------------------------
-""")
+q_s = input("Chcete heslo uložit do .txt souboru?\n")
+if q_s in("jo","ano","yes"):
+
+    os.system('cls')
+    time.sleep(2)
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    letters_2 = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    special = ['%', '#', '$', '!', '&', '(', ')', '*', '+', '?']
+    all = letters+letters_2+numbers+special
+    password = ''.join((random.choice(all) for i in range(q_n)))
+    time.sleep(2)
+    with open ("Password.txt", "w") as file:
+        print(file.write(f"Your password is: {password}"))
+    print("Done :)")
+elif q_s in("ne","no"):
+    os.system('cls')
+    time.sleep(2)
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    letters_2 = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    special = ['%', '#', '$', '!', '&', '(', ')', '*', '+', '?']
+    all = letters+letters_2+numbers+special
+    password = ''.join((random.choice(all) for i in range(q_n)))
+    print(f"Vaše heslo je: {password}")
